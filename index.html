@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet.photon.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet-minimap@3.6.1/dist/Control.MiniMap.min.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -60,6 +61,7 @@
         <script src="data/JangkauanWilayah400m_5.js"></script>
         <script src="data/AreaPublikdalamjangkauan400m_6.js"></script>
         <script src="data/halte_kedirihalte_sip6baru__halte_reproject_7.js"></script>
+		<script src="https://unpkg.com/leaflet-minimap@3.6.1/dist/Control.MiniMap.min.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -774,6 +776,17 @@
         map.on("layerremove", function(){
             resetLabels([layer_halte_kedirihalte_sip6baru__halte_reproject_7]);
         });
+		var miniMapLayer = new L.TileLayer(
+			'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+			{
+				minZoom: 0,
+				maxZoom: 13
+			});
+			var miniMap = new L.Control.MiniMap(miniMapLayer, {
+				toggleDisplay: true,
+				minimized: false,
+				position: 'bottomright'
+			}).addTo(map);
         </script>        
     </body>
 </html>
